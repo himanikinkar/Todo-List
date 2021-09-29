@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TODO list</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/0986276ece.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href = "todoList.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="txtb" placeholder="add task">
+        <div class="NotComp">
+            <h1>Not Completed</h1>
+            
+            <!-- <div class="task">
+                task
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-check-double"></i>
+            </div> -->
+            <!-- <div class="task">
+                task
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-check-double"></i>
+            </div> -->
+
+        </div>
+        <div class="comp">
+            <h1>Completed</h1>
+
+            <!-- <div class="task">
+                Takes
+                <i class="fas fa-trash-alt"></i>
+            </div> -->
+            <!-- <div class="task">
+                Takes
+                <i class="fas fa-trash-alt"></i>
+            </div> -->
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    $(".txtb").on("keyup",function(e){
+        if(e.keyCode == 13 && $(".txtb").val() !=""){
+            var task = $("<div class='task'></div>").text($(".txtb").val());
+            var del = $("<i class='fas fa-trash-alt'></i").click(function(){
+                var p = $(this).parent();
+                p.fadeOut(function(){
+                    p.remove();
+                });
+            });
+
+
+            var check = $("<i class='fas fa-check-double'></i>").click(function(){
+                var p = $(this).parent();
+                p.fadeOut(function(){
+                    $(".comp").append(p);
+                    p.fadeIn();
+                });
+                $(this).remove();
+            });
+
+            task.append(del,check);
+            $(".NotComp").append(task);
+
+            $(".txtb").val("")
+        }
+    });
+    </script>
+
+
+
+</body>
+</html>
